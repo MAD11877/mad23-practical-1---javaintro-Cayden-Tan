@@ -27,6 +27,45 @@ public class Question5
      */
      
     Scanner in = new Scanner(System.in);
+    int int1 = in.nextInt();
+    int[] listInt = new int[int1];
+    int[] Countlist = new int[int1];
+    for (int i=0;i<int1;i++)
+      {
+        int intX = in.nextInt();
+        listInt[i] = intX;  
+      }
+    for (int i=0;i<int1;i++)
+      {
+        int c = 1;
+        for (int j=i+1;j<int1;j++)
+          {
+            if (listInt[i] == listInt[j] )
+            {
+              c++;
+            }
+            Countlist[i] = c;
+          }
+      }
+    for (int i=1;i<int1;i++)
+      {
+        int c = 0;
+        if (Countlist[c] < Countlist[i])
+        {
+          c++;
+          if (i == int1 - 1)
+          {
+            System.out.println(listInt[c]);
+          }
+        }
+        else
+        {
+          if (i == int1 - 1)
+          {
+            System.out.println(listInt[c]);
+          }
+        }
+      }
     
   }
 }
