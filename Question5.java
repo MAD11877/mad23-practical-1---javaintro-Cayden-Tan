@@ -26,46 +26,33 @@ public class Question5
      * Hint: Use a loop to get input. Use another 2 loops to find the mode
      */
      
-    Scanner in = new Scanner(System.in);
-    int int1 = in.nextInt();
-    int[] listInt = new int[int1];
-    int[] Countlist = new int[int1];
-    for (int i=0;i<int1;i++)
-      {
-        int intX = in.nextInt();
-        listInt[i] = intX;  
-      }
-    for (int i=0;i<int1;i++)
-      {
-        int c = 1;
-        for (int j=i+1;j<int1;j++)
-          {
-            if (listInt[i] == listInt[j] )
-            {
-              c++;
-            }
-            Countlist[i] = c;
-          }
-      }
-    for (int i=1;i<int1;i++)
-      {
-        int c = 0;
-        if (Countlist[c] < Countlist[i])
-        {
-          c++;
-          if (i == int1 - 1)
-          {
-            System.out.println(listInt[c]);
-          }
-        }
-        else
-        {
-          if (i == int1 - 1)
-          {
-            System.out.println(listInt[c]);
-          }
-        }
-      }
+    Scanner scanner = new Scanner(System.in);
     
+    int n = scanner.nextInt();
+
+    int[] nums = new int[n];
+    for (int i = 0; i < n; i++) {
+      nums[i] = scanner.nextInt();
+    }
+
+    int mode = findMode(nums);
+    System.out.println(mode);
+    
+  }
+  public static int findMode(int[] nums) {
+    Map<Integer, Integer> counts = new HashMap<>();
+    int maxCount = 0;
+    int mode = 0;
+
+    for (int num : nums) {
+      int count = counts.getOrDefault(num, 0) + 1;
+      counts.put(num, count);
+      if (count > maxCount) {
+        maxCount = count;
+        mode = num;
+      }
+    }
+
+    return mode;
   }
 }
